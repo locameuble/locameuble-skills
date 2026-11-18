@@ -166,7 +166,7 @@ const ARTICLES$1 = [
 	immobilisation("travaux-toiture", "Réfection de toiture", "construction", "2131", "2033-C/430", ans(25, 25, 30)),
 	immobilisation("travaux-etancheite-facade", "Étanchéité et ravalement de façade", "construction", "2131", "2033-C/430", ans(25, 25, 30)),
 	immobilisation("travaux-electricite", "Réfection de l'installation électrique", "construction", "2135", "2033-C/430", ans(10, 20, 20)),
-	immobilisation("travaux-plomberie-chauffage", "Plomberie, chauffage, climatisation", "construction", "2135", "2033-C/430", ans(10, 15, 20)),
+	immobilisation("travaux-plomberie-chauffage", "Chauffage, chauffe-eau, climatisation, plomberie", "construction", "2135", "2033-C/430", ans(10, 10, 20)),
 	immobilisation("travaux-amenagements", "Aménagements intérieurs (sols, peintures, cloisons, salle d'eau)", "construction", "2135", "2033-C/430", ans(10, 12, 20)),
 	immobilisation("amenagements-exterieurs", "Aménagements extérieurs (clôture, terrasse)", "construction", "2181", "2033-C/450", ans(10, 15, 20)),
 	immobilisation("amenagements-sans-murs", "Aménagements intérieurs d'un logement dont les murs ne sont pas à l'actif", "construction", "2181", "2033-C/450", ans(10, 12, 20)),
@@ -337,6 +337,10 @@ const REGLES_2025 = {
 		autresRevenus: "imposables-en-france",
 		ref: "BOI-BIC-CHAMP-40-10 § 165, version du 5 février 2020"
 	},
+	tauxMinimumNonResident: {
+		montant: 2957900,
+		ref: "CGI art. 197 A ; barème des revenus 2025, loi n° 2026-103 de finances pour 2026"
+	},
 	prelevementsSociaux: {
 		resident: {
 			taux: .186,
@@ -395,7 +399,7 @@ const ARTICLES = REGLES_2025.articles.map((a) => ({
 	...a,
 	...AVANT_2025[a.id]
 }));
-function jeu(annee, microBic) {
+function jeu(annee, microBic, tauxMinimumNonResident) {
 	return {
 		...REGLES_2025,
 		annee,
@@ -408,6 +412,7 @@ function jeu(annee, microBic) {
 				plafondGlobal: microBic.tourismeClasse.plafond
 			}
 		},
+		tauxMinimumNonResident,
 		prelevementsSociaux: {
 			resident: {
 				taux: .172,
@@ -426,28 +431,32 @@ function jeu(annee, microBic) {
 		drapeaux: []
 	};
 }
+const minimum = (montant, loi) => ({
+	montant,
+	ref: `CGI art. 197 A ; barème de l'année, ${loi}`
+});
 const MICRO_2020 = "CGI art. 50-0, plafonds des revenus 2020 à 2022";
 const MICRO_2023 = "CGI art. 50-0 avant la loi n° 2023-1322 ; BOFiP ACTU-2024-00003 et BOI-BIC-CHAMP-40-20 § 55";
 const REGLES_2021 = jeu(2021, {
 	longueDuree: micro(726e4, .5, MICRO_2020, "2°"),
 	tourismeClasse: micro(1762e4, .71, MICRO_2020, "1°"),
 	tourismeNonClasse: micro(726e4, .5, MICRO_2020, "2°")
-});
+}, minimum(2607e3, "loi n° 2021-1900 de finances pour 2022"));
 const REGLES_2022 = jeu(2022, {
 	longueDuree: micro(726e4, .5, MICRO_2020, "2°"),
 	tourismeClasse: micro(1762e4, .71, MICRO_2020, "1°"),
 	tourismeNonClasse: micro(726e4, .5, MICRO_2020, "2°")
-});
+}, minimum(2747800, "loi n° 2022-1726 de finances pour 2023"));
 const REGLES_2023 = jeu(2023, {
 	longueDuree: micro(777e4, .5, MICRO_2023, "2°"),
 	tourismeClasse: micro(1887e4, .71, MICRO_2023, "1°"),
 	tourismeNonClasse: micro(777e4, .5, MICRO_2023, "2°")
-});
+}, minimum(2879700, "loi n° 2023-1322 de finances pour 2024"));
 const REGLES_2024 = jeu(2024, {
 	longueDuree: micro(777e4, .5, MICRO_2023, "2°"),
 	tourismeClasse: micro(1887e4, .71, MICRO_2023, "1°"),
 	tourismeNonClasse: micro(777e4, .5, MICRO_2023, "2°")
-});
+}, minimum(2931500, "loi n° 2025-127 de finances pour 2025"));
 // src/lib/fiscal/regles/2026.ts
 /** Règles de l'exercice 2026, déclaré au printemps 2027. Valeurs vérifiées le 9 novembre 2026. */
 const MICRO_2026 = "CGI art. 50-0 ; service-public.gouv.fr F32744";
@@ -502,6 +511,7 @@ const REGLES_2026 = {
 		autresRevenus: "imposes-etat-residence",
 		ref: "BOI-BIC-CHAMP-40-10 § 165, version du 15 avril 2026"
 	},
+	tauxMinimumNonResident: null,
 	drapeaux: [{
 		id: "plafond_amortissement_plf2027",
 		actif: false,

@@ -63,16 +63,18 @@ Profil « Résidence principale ou sous-location » : ni terrain ni gros œuvre 
 
 ### Mobilier et équipements
 
-| Élément                 | Durée par défaut | Bornes  |
-| ----------------------- | ---------------- | ------- |
-| Cuisine équipée         | 10 ans           | 5 à 15  |
-| Mobilier                | 7 ans            | 5 à 10  |
-| Literie                 | 5 ans            | 3 à 10  |
-| Électroménager          | 5 ans            | 3 à 10  |
-| Audiovisuel             | 5 ans            | 3 à 7   |
-| Informatique            | 3 ans            | 3 à 5   |
-| Plomberie, chauffage    | 15 ans           | 10 à 20 |
-| Aménagements extérieurs | 15 ans           | 10 à 20 |
+| Élément                                          | Durée par défaut | Bornes  |
+| ------------------------------------------------ | ---------------- | ------- |
+| Cuisine équipée                                  | 10 ans           | 5 à 15  |
+| Mobilier                                         | 7 ans            | 5 à 10  |
+| Literie                                          | 5 ans            | 3 à 10  |
+| Électroménager                                   | 5 ans            | 3 à 10  |
+| Audiovisuel                                      | 5 ans            | 3 à 7   |
+| Informatique                                     | 3 ans            | 3 à 5   |
+| Chauffage, chauffe-eau, climatisation, plomberie | 10 ans           | 10 à 20 |
+| Aménagements extérieurs                          | 15 ans           | 10 à 20 |
+
+Un radiateur, un chauffe-eau, une pompe à chaleur, une chaudière ou une climatisation se déposent sans abîmer le bâti. Ils s'amortissent donc à part du gros œuvre, sur leur propre durée d'usage, et le moteur les propose à 10 ans, le bas de la fourchette du § 80. Remplacer tout un chauffage (un chauffage gaz par des radiateurs électriques, par exemple) est une immobilisation, pas une charge : la tolérance des 500 € HT vise un petit matériel acheté seul, pas une installation posée avec ses circuits. Seule la réparation d'un appareil qui reste en place passe en charge.
 
 Le plan se calcule avec `scripts/amortissement.mjs` ou l'outil https://locameuble.fr/outils/tableau-amortissement-lmnp.
 
