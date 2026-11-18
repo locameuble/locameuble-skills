@@ -1,0 +1,17 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "locameuble",
+  "description": "Le plugin Locameublé pour Claude Code : la comptabilité de votre location meublée depuis le terminal.",
+  "owner": {
+    "name": "R SOCIETY SASU",
+    "email": "hello@locameuble.fr",
+    "url": "https://locameuble.fr"
+  },
+  "plugins": [
+    {
+      "name": "locameuble",
+      "source": "./",
+      "description": "Le serveur MCP de Locameublé et une compétence pour les gestes courants : lire le résultat, importer un relevé, encaisser un loyer, préparer une quittance, demander la clôture."
+    }
+  ]
+}

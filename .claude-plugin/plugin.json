@@ -1,0 +1,15 @@
+{
+  "name": "locameuble",
+  "description": "Tenez la comptabilité de votre location meublée depuis Claude : biens, baux, loyers, relevés bancaires, résultat de l'exercice et contrôles avant la liasse.",
+  "version": "1.0.0",
+  "author": {
+    "name": "R SOCIETY SASU",
+    "email": "hello@locameuble.fr",
+    "url": "https://locameuble.fr"
+  },
+  "homepage": "https://locameuble.fr",
+  "privacyPolicyUrl": "https://locameuble.fr/confidentialite",
+  "icon": ".claude-plugin/icon.png",
+  "keywords": ["lmnp", "location-meublee", "comptabilite", "liasse-fiscale", "mcp"],
+  "license": "MIT"
+}

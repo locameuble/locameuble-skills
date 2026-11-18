@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "locameuble": {
+      "type": "http",
+      "url": "https://app.locameuble.fr/mcp"
+    }
+  }
+}
